@@ -18,7 +18,7 @@ export const fetchCurrentWeather = async (city) => {
         data = data.data[0]
         if (data) {
             return {
-                date: moment(data.dt),
+                date: moment(data.dt *1000).format("DD-MM-YYYY,h:mm:ss a"),
                 temperature: data.temp,
                 description: data.weather[0].description,
                 humidity: data.humidity,
@@ -51,7 +51,7 @@ export const fetchWeatherBetweenDates = async (city, startDate, endDate) => {
                 let data = response.data.data[0]
                 if (data) {
                     return {
-                        date: new Date(data.dt * 1000).toISOString(),
+                        date: moment(data.dt *1000).format("DD-MM-YYYY,h:mm:ss a"),
                         temperature: data.temp,
                         description: data.weather[0].description,
                         humidity: data.humidity,
