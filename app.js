@@ -1,4 +1,3 @@
-// index.js
 import express from 'express';
 import { createHandler } from 'graphql-http/lib/use/express';
 import { schema, root } from './src/schema.js';
@@ -8,8 +7,6 @@ const app = express();
 
 await DB()
 
-// Create an Express instance serving all methods on `/graphql`
-// where the GraphQL over HTTP express request handler is
 app.all('/getweather', createHandler({ schema, rootValue: root }));
 
 app.listen({ port: 4000 });
